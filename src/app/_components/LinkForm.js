@@ -2,8 +2,6 @@
 
 import {useContext, useState} from "react";
 
-import {Button} from "@mui/material";
-
 import {ICONS} from "@/utils/icons";
 import ShowQR from "./ShowQR";
 import {UrlContext} from "@/context/context";
@@ -125,28 +123,28 @@ const LinkForm = () => {
 
             {/* Button for various functionality on the link */}
             <div className="text-gray-600 flex gap-4 mt-5">
-                <Button
+                <button
                     className="text-[#f29c11] p-2 rounded-lg shadow-sm shadow-[#f29c11] bg-black hover:bg-black normal-case font-Outfit tracking-wider flex justify-center items-center gap-3"
                     onClick={() => setOpen(true)}
                 >
                     {ICONS.QR}
                     <p>Generate QR</p>
-                </Button>
-                <Button
+                </button>
+                <button
                     className="text-[#f29c11] p-2 rounded-lg shadow-sm shadow-[#f29c11] bg-black hover:bg-black normal-case font-Outfit tracking-wider flex justify-center items-center gap-3"
                     onClick={() => setSave(true)}
                 >
                     {ICONS.Analytics}
                     <p>Save for Analytics</p>
-                </Button>
+                </button>
 
-                <Button
+                <button
                     className="text-[#f29c11] p-2 rounded-lg shadow-sm shadow-[#f29c11] bg-black hover:bg-black normal-case font-Outfit tracking-wider flex justify-center items-center gap-3"
                     onClick={() => handleRefresh()}
                 >
                     {ICONS.Reset}
                     <p>Refresh</p>
-                </Button>
+                </button>
             </div>
 
             {open && (
