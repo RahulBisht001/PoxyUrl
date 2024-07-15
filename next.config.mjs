@@ -6,7 +6,7 @@ const nextConfig = {
 
     env: {
         FRONTEND_URL: "https://poxyurl.in",
-        BACKEND_URL: "https://api.poxyurl.in",
+        BACKEND_URL: "https://www.api.poxyurl.in",
     },
 };
 

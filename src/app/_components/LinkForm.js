@@ -29,8 +29,6 @@ const LinkForm = () => {
             body: JSON.stringify(requestData),
         };
 
-        alert(process.env.BACKEND_URL);
-
         fetch(`${process.env.BACKEND_URL}/api/v1/shorten`, requestOptions)
         .then((response) => {
             if (!response.ok) {
