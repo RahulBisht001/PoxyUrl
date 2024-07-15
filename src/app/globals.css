@@ -3,31 +3,222 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	color: rgb(var(--foreground-rgb));
+	background: linear-gradient(
+			to bottom,
+			transparent,
+			rgb(var(--background-end-rgb))
+		)
+		rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+
+/*~ clerk auth signin/signup UI customization */
+
+.cl-internal-b3fm6y {
+	display: none;
+}
+
+.cl-internal-17ydaof {
+	gap: 1rem;
+	padding: 1.5rem 2rem 1.5rem 2rem;
+}
+.cl-internal-b3fm6y {
+	background-color: #6340ec;
+	color: #121212;
+}
+.cl-internal-1fsg6zy:hover {
+	background-color: #4b2cc6;
+}
+.cl-internal-1fsg6zy {
+	background-color: #6340ec;
+	font-weight: 400;
+}
+
+/*~ custom css for input field */
+
+.searchbox-wrap {
+	display: flex;
+	width: 100%;
+	margin-top: 2%;
+	margin-left: auto;
+	margin-right: auto;
+
+	input {
+		flex: 1;
+		padding: 15px;
+		padding-left: 15px;
+		padding-right: 5px;
+		font-size: 1em;
+		font-weight: 400;
+		background-color: #e2e8f0;
+		color: #397bf7;
+		-webkit-border-top-left-radius: 25px;
+		-webkit-border-bottom-left-radius: 25px;
+		-moz-border-radius-topleft: 25px;
+		-moz-border-radius-bottomleft: 25px;
+		border-top-left-radius: 25px;
+		border-bottom-left-radius: 25px;
+		box-shadow: none;
+		outline: none;
+		border: none;
+		box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.19);
+	}
+	input:focus {
+		background-color: #e2e8f0;
+	}
+
+	#inputButton {
+		padding-right: 6px;
+		background-color: #e2e8f0;
+		-webkit-border-top-right-radius: 25px;
+		-webkit-border-bottom-right-radius: 25px;
+		-moz-border-radius-topright: 25px;
+		-moz-border-radius-bottomright: 25px;
+		border-top-right-radius: 25px;
+		border-bottom-right-radius: 25px;
+		box-shadow: 5px 4px 6px rgba(0, 0, 0, 0.19);
+		border: none;
+		cursor: pointer;
+		cursor: hand;
+
+		span {
+			margin-left: 5px;
+			padding: 12px 20px;
+			font-size: 1em;
+			letter-spacing: 0.02ch;
+			font-weight: 600;
+			color: #000;
+			background-color: #f29c11;
+			border-radius: 25px;
+			box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.19);
+			&:hover {
+				background-color: #e28b00;
+				box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.19);
+			}
+		}
+	}
+}
+
+/*~ background animation for home page */
+
+@keyframes pulsate {
+	0%,
+	100% {
+		transform: scale(1);
+		opacity: 0.5;
+	}
+	50% {
+		transform: scale(1.1);
+		opacity: 1;
+	}
+}
+
+.circle {
+	border-radius: 50%;
+	position: fixed;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: transparent;
+	opacity: 0.5;
+}
+
+.test-1 {
+	height: 250px;
+	width: 250px;
+	border: 1px solid #2f2f34;
+	/* animation: pulsate 5s ease-in-out infinite;  */
+	/* transform-origin: center;  */
+	box-shadow: 0 0 20px #444447;
+}
+
+.test-2 {
+	height: 500px;
+	width: 500px;
+	border: 1px solid #4c4a4a;
+	box-shadow: 0 0 20px #444447;
+}
+
+.test-3 {
+	width: 850px;
+	height: 850px;
+	border: 1px solid #424242;
+	box-shadow: 0 0 20px #444447;
+	overflow: hidden;
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+	.test-1 {
+		height: 200px;
+		width: 200px;
+	}
+
+	.test-2 {
+		height: 400px;
+		width: 400px;
+	}
+
+	.test-3 {
+		width: 600px;
+		height: 600px;
+	}
+}
+
+/* Small screens (mobile) */
+@media (max-width: 768px) {
+	.test-1 {
+		height: 150px;
+		width: 150px;
+	}
+
+	.test-2 {
+		height: 300px;
+		width: 300px;
+	}
+
+	.test-3 {
+		width: 450px;
+		height: 450px;
+	}
+}
+
+/* Extra small screens (very small mobile devices) */
+@media (max-width: 480px) {
+	.test-1 {
+		height: 100px;
+		width: 100px;
+	}
+
+	.test-2 {
+		height: 200px;
+		width: 200px;
+	}
+
+	.test-3 {
+		width: 350px;
+		height: 350px;
+	}
 }
