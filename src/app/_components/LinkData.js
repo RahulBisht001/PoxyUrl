@@ -13,20 +13,16 @@ const LinkData = () => {
 
     const handleDeleteUrl = async (shortId) => {
         try {
-            const response = await fetch(
-                `${process.env.BACKEND_URL}
-                /api/v1/link/${shortId}`,
-                {
-                    method: "DELETE",
-                    headers: {
-                        // Add headers if needed, such as authorization headers
-                        "Content-Type": "application/json",
-                        // Add your session token or any other authentication headers
-                        // Example:
-                        // "Authorization": `Bearer ${sessionToken}`
-                    },
-                }
-            );
+            const response = await fetch(`${process.env.BACKEND_URL}/api/v1/link/${shortId}`, {
+                method: "DELETE",
+                headers: {
+                    // Add headers if needed, such as authorization headers
+                    "Content-Type": "application/json",
+                    // Add your session token or any other authentication headers
+                    // Example:
+                    // "Authorization": `Bearer ${sessionToken}`
+                },
+            });
             if (!response.ok) {
                 throw new Error("Failed to delete the URL");
             }
