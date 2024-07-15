@@ -5,8 +5,8 @@ const nextConfig = {
     },
 
     env: {
-        FRONTEND_URL: "http://localhost:3000",
-        BACKEND_URL: "http://localhost:8000",
+        FRONTEND_URL: "https://poxyurl.in",
+        BACKEND_URL: "https://api.poxyurl.in",
     },
 };
 
