@@ -15,7 +15,7 @@ const page = () => {
 
     const fetchShortUrl = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/api/v1/${pathname}`);
+            const response = await fetch(`${process.env.BACKEND_URL}/api/v1/${pathname}`);
 
             if (response.ok) {
                 const {originalUrl} = await response.json();

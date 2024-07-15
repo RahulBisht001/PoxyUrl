@@ -21,7 +21,7 @@ const InputBar = () => {
             },
             body: JSON.stringify(requestData),
         };
-        fetch(`http://localhost:8000/api/v1/shorten`, requestOptions)
+        fetch(`${process.env.BACKEND_URL}/api/v1/shorten`, requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
