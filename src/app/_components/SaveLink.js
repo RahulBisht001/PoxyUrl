@@ -30,42 +30,46 @@ const SaveLink = ({save, setSave}) => {
     const shortId = urlParts[urlParts.length - 1]; // Get the last part
 
     const handleSaveUrl = async (e) => {
-        e.preventDefault();
+        try {
+            e.preventDefault();
 
-        // Get the authentication token from Clerk
-        const authToken = await getToken();
+            // Get the authentication token from Clerk
+            const authToken = await getToken();
 
-        const requestData = {
-            shortId,
-            linkName,
-        };
+            const requestData = {
+                shortId,
+                linkName,
+            };
 
-        const requestOptions = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${authToken}`,
-            },
-            body: JSON.stringify(requestData),
-        };
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${authToken}`,
+                },
+                body: JSON.stringify(requestData),
+            };
 
-        fetch(`${process.env.BACKEND_URL}/api/v1/saveUrl`, requestOptions)
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
+            fetch(`${process.env.BACKEND_URL}/api/v1/saveUrl`, requestOptions)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
 
-            return response.json(); // Assuming server responds with JSON
-        })
-        .then((data) => {
-            console.log("Shortened URL:", data);
-            // Adjust according to server response structure
-            // Handle success, e.g., update UI with shortened URL
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-            // Handle error, e.g., show error message to user
-        });
+                return response.json(); // Assuming server responds with JSON
+            })
+            .then((data) => {
+                console.log("Shortened URL:", data);
+                // Adjust according to server response structure
+                // Handle success, e.g., update UI with shortened URL
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                // Handle error, e.g., show error message to user
+            });
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (

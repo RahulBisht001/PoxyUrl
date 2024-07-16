@@ -1,10 +1,13 @@
 "use client";
 
 import React, {useEffect, useState} from "react";
+import {useAuth} from "@clerk/nextjs";
 import Link from "next/link";
+
 import {ICONS} from "@/utils/icons";
 
 const LinkData = () => {
+    const {getToken} = useAuth();
     const [links, setLinks] = useState([]);
     useEffect(() => {
         handleFetchAllUrls();
@@ -13,14 +16,16 @@ const LinkData = () => {
 
     const handleDeleteUrl = async (shortId) => {
         try {
+            // Get the authentication token from Clerk
+            const authToken = await getToken();
+
             const response = await fetch(`${process.env.BACKEND_URL}/api/v1/link/${shortId}`, {
                 method: "DELETE",
                 headers: {
-                    // Add headers if needed, such as authorization headers
                     "Content-Type": "application/json",
                     // Add your session token or any other authentication headers
                     // Example:
-                    // "Authorization": `Bearer ${sessionToken}`
+                    Authorization: `Bearer ${authToken}`,
                 },
             });
             if (!response.ok) {
@@ -37,20 +42,23 @@ const LinkData = () => {
 
     const handleFetchAllUrls = async () => {
         try {
+            // Get the authentication token from Clerk
+            const authToken = await getToken();
+
             const response = await fetch(`${process.env.BACKEND_URL}/api/v1/links/all`, {
                 method: "GET",
                 headers: {
-                    // Add headers if needed, such as authorization headers
                     "Content-Type": "application/json",
                     // Add your session token or any other authentication headers
                     // Example:
-                    // "Authorization": `Bearer ${sessionToken}`
+                    Authorization: `Bearer ${authToken}`,
                 },
             });
             if (response.ok) {
                 const res = await response.json();
-                console.log(res.data);
-                setLinks(res.data); // Assuming your backend responds with an array of URLs
+                console.log(res.urls);
+                setLinks(res.urls);
+                // Assuming your backend responds with an array of URLs
             } else {
                 throw new Error("Failed to fetch URLs");
             }
