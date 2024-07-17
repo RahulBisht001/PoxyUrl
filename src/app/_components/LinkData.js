@@ -115,7 +115,7 @@ const LinkData = () => {
                                                 <p className="my-2">{`${process.env.FRONTEND_URL}/id/${link.shortId}`}</p>
                                                 <div className="flex justify-between items-center text-sm mt-4">
                                                     <Link
-                                                        href={`${process.env.FRONTEND_URL}/${link.shortId}`}
+                                                        href={`${process.env.FRONTEND_URL}/id/${link.shortId}`}
                                                         target="_blank"
                                                         className="text-[#f29c11]"
                                                     >
