@@ -42,7 +42,7 @@ const LinkForm = () => {
             // Adjust according to server response structure
             // Handle success, e.g., update UI with shortened URL
 
-            setShortUrl(`${process.env.FRONTEND_URL}/${data.shortId}`);
+            setShortUrl(`${process.env.FRONTEND_URL}/id/${data.shortId}`);
         })
         .catch((error) => {
             console.error("Error:", error);
