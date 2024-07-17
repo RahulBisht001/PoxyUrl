@@ -112,7 +112,7 @@ const LinkData = () => {
                                                     </button>
                                                 </div>
 
-                                                <p className="my-2">{`${process.env.FRONTEND_URL}/${link.shortId}`}</p>
+                                                <p className="my-2">{`${process.env.FRONTEND_URL}/id/${link.shortId}`}</p>
                                                 <div className="flex justify-between items-center text-sm mt-4">
                                                     <Link
                                                         href={`${process.env.FRONTEND_URL}/${link.shortId}`}
