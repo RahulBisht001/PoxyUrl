@@ -1,5 +1,5 @@
 import {clerkMiddleware, createRouteMatcher} from "@clerk/nextjs/server";
-import {NextResponse} from "next/server";
+import {NextResponse, userAgent} from "next/server";
 
 const isProtectedRoute = createRouteMatcher(["/dashboard(.*)", "/profile(.*)"]);
 const isShortLinkRoute = createRouteMatcher("/id(.*)");
@@ -18,8 +18,18 @@ export default clerkMiddleware(async (auth, req) => {
             const parts = pathname.split("/");
             const shortId = parts[parts.length - 1];
 
+            // Retrieve user-agent from request headers
+            // const userAgent = navigator.userAgent;
+
+            const UserAgent = userAgent(req);
+            console.log("_____", UserAgent);
+
             // Fetch the original URL asynchronously
-            const response = await fetch(`${process.env.BACKEND_URL}/api/v1/id/${shortId}`);
+            const response = await fetch(`${process.env.BACKEND_URL}/api/v1/id/${shortId}`, {
+                headers: {
+                    useragentinfo: JSON.stringify(UserAgent),
+                },
+            });
 
             if (!response.ok) {
                 throw new Error("Network response was not ok");
